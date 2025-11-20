@@ -1,0 +1,345 @@
+/* ===== Global base ===== */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ===== Full-screen hero landing page ===== */
+
+.hero-body {
+  min-height: 100vh;
+  position: relative;
+  color: #f9fafb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background image layer */
+.hero-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("../images/ai-hero.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.35);          /* darken image so text pops */
+  z-index: -2;
+}
+
+/* Soft gradient overlay on top of image */
+.hero-body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(59, 130, 246, 0.35),
+    rgba(15, 23, 42, 0.85));
+  mix-blend-mode: soft-light;
+  z-index: -1;
+}
+
+/* Content shell that floats above the background */
+.hero-shell {
+  max-width: 1100px;
+  width: 100%;
+  padding: 40px 28px 48px;
+}
+
+/* Title + tagline */
+/* --- Home hero: centered text + nicer fonts --- */
+
+.hero-header {
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text-block {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero-text-block h1 {
+  margin: 0 0 10px;
+  font-size: 40px;          /* bigger title */
+  font-weight: 700;
+  letter-spacing: 0.03em;   /* slight tracking for “headline” feel */
+}
+
+.hero-tagline {
+  margin: 0;
+  font-size: 16px;          /* slightly larger */
+  line-height: 1.5;
+  color: #e5e7eb;
+}
+
+
+/* Cards row */
+.hero-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* Individual cards */
+.hero-card {
+  display: block;
+  padding: 18px 18px 20px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+              background 0.12s ease;
+}
+
+.hero-card h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight:600;
+}
+
+.hero-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Color accents for each card */
+.card-1 {
+  border-top: 3px solid #3b82f6;
+}
+.card-2 {
+  border-top: 3px solid #22c55e;
+}
+.card-3 {
+  border-top: 3px solid #f97316;
+}
+
+.hero-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.55);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+/* Full-width, wrapping legend below the chart */
+.legend-grid {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eef2ff;
+  cursor: pointer;
+  transition: background 0.12s ease, opacity 0.12s ease, transform 0.1s ease;
+}
+
+.legend-item:hover {
+  transform: translateY(-1px);
+  background: #e0e7ff;
+}
+
+.legend-item.active-sector {
+  background: #1d4ed8;
+  color: #f9fafb;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-label {
+  white-space: nowrap;
+}
+
+/* --- Shared layout for all chart pages --- */
+.page-body {
+  position: relative;
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 26px 20px 40px;
+}
+
+/* Centered title + subtitle, back link in the middle */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.page-title-block {
+  max-width: 720px;
+}
+
+.page-header h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+
+/* Back link centered above title */
+.back-link {
+  font-size: 14px;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Subtitles / descriptions centered under title */
+.page-subtitle,
+.page-description {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+  text-align: center;
+}
+
+/* Chart section centered on the page */
+.chart-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Big card that holds chart (and legend for Ramp) */
+.chart-container {
+  width: 100%;
+  max-width: 1050px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  padding: 22px 22px 26px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.16);
+}
+
+/* Make SVG fill card nicely */
+.chart-container svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Full-width, centered legend below Ramp chart */
+.legend-grid {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 10px;
+  font-size: 12px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eef2ff;
+  cursor: pointer;
+  transition: background 0.12s ease, opacity 0.12s ease, transform 0.1s ease;
+}
+
+.legend-item:hover {
+  transform: translateY(-1px);
+  background: #e0e7ff;
+}
+
+.legend-item.active-sector {
+  background: #1d4ed8;
+  color: #f9fafb;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-label {
+  white-space: nowrap;
+}
+
+/* Optional: a bit of spacing for specialty sort row */
+.sort-row {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+/* Base page style (kept simple) */
+.page-body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+/* ==== Background images per page (directly on body) ==== */
+
+body.sectors-bg {
+  background-image: url("../images/sector.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.yearly-bg,
+body.specialty-bg {
+  background-image: url("../images/healthcare.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Light white overlay so charts stay readable */
+.page-body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top,
+    rgba(255,255,255,0.92),
+    rgba(248,250,252,0.96));
+  z-index: -1;
+}
+
+/* Make all page content sit above overlay */
+.page-wrapper {
+  position: relative;
+  z-index: 0;
+}
