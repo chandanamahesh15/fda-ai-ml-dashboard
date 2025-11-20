@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FDA AI/ML Devices by Specialty</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body class="page-body specialty-bg">
+  <div class="page-wrapper">
+    <header class="page-header">
+      <a class="back-link" href="index.html">← Back to overview</a>
+      <div class="page-title-block">
+        <h1>Medical Specialty Distribution</h1>
+        <p class="page-subtitle">
+          Interactive horizontal bar chart with sorting options to compare how
+          AI/ML-enabled devices are distributed across medical specialties.
+        </p>
+      </div>
+    </header>
+
+    <section class="chart-section">
+      <div class="chart-container">
+        <div class="sort-row">
+          Sort by:
+          <button class="sort-button active" data-sort="count">Count (desc)</button>
+          <button class="sort-button" data-sort="name">Specialty name (A–Z)</button>
+        </div>
+        <div id="specialty-chart"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/specialtyChart.js"></script>
+</body>
+
+</html>
